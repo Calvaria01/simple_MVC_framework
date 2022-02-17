@@ -40,6 +40,7 @@ class AccountModel extends Model
     public function savePhoto(array $data)
     {
         $imgDir = "public/img";
+        @mkdir($imgDir, 0777, true);
         $tmp = $data['tmp_name'];
         if (is_uploaded_file($tmp)) {
             $info = getimagesize($tmp);
