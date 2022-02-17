@@ -10,15 +10,19 @@
     <form action="register" method="post">
         <div class="mb-3">
             <label for="FirstName" class="form-label">Имя</label>
-            <input type="text" name="user[first_name]" class="form-control" id="FirstName">
+            <input type="text" name="user[first_name]"
+                   value="<?= $content['first_name'] ?? '' ?>" class="form-control"
+                   id="FirstName">
         </div>
         <div class="mb-3">
             <label for="LastName" class="form-label">Фамилия</label>
-            <input type="text" name="user[last_name]" class="form-control" id="LastName">
+            <input type="text" name="user[last_name]" value="<?= $content['last_name'] ?? '' ?>" class="form-control"
+                   id="LastName">
         </div>
         <div class="mb-3">
             <label for="Email" class="form-label">Email</label>
-            <input type="email" name="user[email]" class="form-control" id="Email" aria-describedby="emailHelp">
+            <input type="email" name="user[email]" value="<?= $content['email'] ?? '' ?>" class="form-control"
+                   id="Email" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">

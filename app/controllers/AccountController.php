@@ -32,12 +32,17 @@ class AccountController extends Controller
         if (isset($_POST['register'])) {
             if (!$this->model->validateData($_POST['user']) || $this->model->userExist($_POST['user']['email'])) {
                 View::message('Неверный данные или пользователь с таким email уже существует');
+                $_SESSION['reg_data'] = $_POST['user'];
                 $this->view->redirect('register');
             } else {
                 $this->model->register($_POST['user']);
                 View::message('Регистрация успешная. Можете залогиниться');
                 $this->view->redirect('index');
             }
+        }
+        if (isset($_SESSION['reg_data'])) {
+            $this->view->setContent($_SESSION['reg_data']);
+            unset($_SESSION['reg_data']);
         }
         $this->view->setTitle('Регистрация');
         $this->view->render();
