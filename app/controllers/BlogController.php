@@ -6,7 +6,7 @@ use app\core\Controller;
 
 class BlogController extends Controller
 {
-    public function indexAction()
+    public function indexAction(): void
     {
         $this->view->setTitle('Список постов');
         $content['Posts'] = $this->model->selectAllPosts();

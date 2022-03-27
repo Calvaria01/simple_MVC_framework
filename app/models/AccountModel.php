@@ -29,7 +29,7 @@ class AccountModel extends Model
         return false;
     }
 
-    public function editUser(array $params)
+    public function editUser(array $params): void
     {
         $sql = "UPDATE users
             SET last_name = :last_name, first_name = :first_name, email = :email, password = :password
@@ -37,7 +37,7 @@ class AccountModel extends Model
         $this->query($sql, $params);
     }
 
-    public function savePhoto(array $data)
+    public function savePhoto(array $data): void
     {
         $imgDir = "public/img";
         @mkdir($imgDir, 0777, true);
@@ -59,7 +59,7 @@ class AccountModel extends Model
         }
     }
 
-    public function addPhoto(array $param)
+    public function addPhoto(array $param): void
     {
         $sql = "UPDATE users
             SET image = :image
@@ -85,7 +85,7 @@ class AccountModel extends Model
         return true;
     }
 
-    public function register(array $user)
+    public function register(array $user): void
     {
         unset($user['password_repeat']);
         $sql = "INSERT INTO users

@@ -24,7 +24,7 @@ class Route
         $key = trim($uri, "/");
         if (array_key_exists($key, $routes)) {
             $this->routes['page'] = $routes[$key]['page'];
-            $this->routes['model'] = $routes[$key]['model'];
+            $this->routes['model'] = $routes[$key]['controller']; // стало лучше!
             $this->controller = 'app\controllers\\' . $routes[$key]['controller'] . 'Controller';
             $this->action = $routes[$key]['action'] . 'Action';
 
@@ -38,7 +38,7 @@ class Route
         return method_exists($this->controller, $this->action);
     }
 
-    public function startAction()
+    public function startAction(): void
     {
         $controller = new $this->controller($this->routes);
         $action = $this->action;

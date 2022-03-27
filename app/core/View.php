@@ -10,19 +10,19 @@ class View
     private string $layout = 'default';
     private array $content;
 
-    public static function renderError($text)
+    public static function renderError(string $text): void
     {
         echo $text;
         exit;
     }
 
-    public function __construct($page, $logon)
+    public function __construct(string $page, bool $logon)
     {
         $this->page = $page;
         $this->logon = $logon;
     }
 
-    public function render()
+    public function render(): void
     {
         $title = $this->title;
         $navbar = $this->getNavbar();
@@ -31,7 +31,7 @@ class View
         unset($_SESSION['message']);
     }
 
-    public function setTitle(string $title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -83,7 +83,7 @@ class View
         }
     }
 
-    public function setContent($content)
+    public function setContent(array $content): void
     {
         $this->content = $content;
     }
@@ -94,7 +94,7 @@ class View
         exit;
     }
 
-    public static function message(string $message)
+    public static function message(string $message): void
     {
         $_SESSION['message'] = $message;
     }

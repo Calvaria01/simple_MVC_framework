@@ -7,7 +7,7 @@ use app\core\View;
 
 class AccountController extends Controller
 {
-    public function loginAction()
+    public function loginAction(): void
     {
         if (isset($_POST['login'])) {
             if ($this->model->userExist($_POST['user']['email'])) {
@@ -27,7 +27,7 @@ class AccountController extends Controller
         $this->view->render();
     }
 
-    public function registerAction()
+    public function registerAction(): void
     {
         if (isset($_POST['register'])) {
             if (!$this->model->validateData($_POST['user']) || $this->model->userExist($_POST['user']['email'])) {
@@ -48,7 +48,7 @@ class AccountController extends Controller
         $this->view->render();
     }
 
-    public function profileAction()
+    public function profileAction(): void
     {
         if (isset($_SESSION['User'])) {
             $content = $_SESSION;
@@ -60,14 +60,14 @@ class AccountController extends Controller
         }
     }
 
-    public function logoutAction()
+    public function logoutAction(): void
     {
         unset($_SESSION['User']);
         View::message('Вы вышли из профиля');
         $this->view->redirect('index');
     }
 
-    public function editAction()
+    public function editAction(): void
     {
         if (isset($_POST['edit'])) {
             foreach ($_POST['user'] as $key => $value) {
@@ -79,7 +79,7 @@ class AccountController extends Controller
         $this->view->redirect('profile');
     }
 
-    public function photoAction()
+    public function photoAction(): void
     {
         if (isset($_POST['photo'])) {
             $this->model->savePhoto($_FILES['avatar']);
